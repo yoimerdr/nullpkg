@@ -1,3 +1,5 @@
+import collections
+
 from ._import import Import
 from ..utils import PathNode, getName, paths, getFullname
 
@@ -18,7 +20,7 @@ class File(PathNode):
 
     @items.setter
     def items(self, value):
-        self.__items = {it.name: it for it in value} if value else {}
+        self.__items = collections.OrderedDict(**{it.name: it for it in value} if value else {})
 
     @property
     def imports(self):

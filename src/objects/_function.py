@@ -1,7 +1,8 @@
+import collections
 from ..utils import NameIndentable, getName, to, printable, ReturnType
 from ..variables import Parameter
 
-__all__ = ('Function', )
+__all__ = ('Function',)
 
 
 class Function(NameIndentable):
@@ -17,7 +18,8 @@ class Function(NameIndentable):
 
     @params.setter
     def params(self, params):
-        self.__params = {getName(i): to(i, Parameter, required=True) for i in params} if params else None
+        self.__params = collections.OrderedDict(
+            **{getName(i): to(i, Parameter, required=True) for i in params}) if params else None
 
     def append(self, param):
         self.__params[getName(param)] = to(param, Parameter, required=True)

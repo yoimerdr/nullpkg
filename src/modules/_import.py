@@ -1,3 +1,5 @@
+import collections
+
 from ..utils import getName, ImportPathNode, Indentable, Nameable, to, getFullname
 
 __all__ = ('Import', 'AliasImport')
@@ -48,7 +50,7 @@ class Import(ImportPathNode, Indentable):
 
     @imports.setter
     def imports(self, imports):
-        self.__imports = {getName(i): to(i, Nameable) for i in imports} if imports else {}
+        self.__imports = collections.OrderedDict(**{getName(i): to(i, Nameable) for i in imports} if imports else {})
 
     @property
     def alias(self):

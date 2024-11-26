@@ -1,3 +1,5 @@
+import collections
+
 from ._file import File
 from ._import import Import
 from ..utils import getFullname, paths
@@ -18,7 +20,7 @@ class Package(File):
     @packages.setter
     def packages(self, packages):
         if self.__packages is None:
-            self.__packages = {}
+            self.__packages = collections.OrderedDict()
         else:
             self.__packages.clear()
         if packages:
