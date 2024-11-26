@@ -49,7 +49,7 @@ im = File(
             superclass="Displayable",
             methods=[
                 ClassMethod.init(("path",)),
-                ClassMethod("load", return_value="Surfer()")
+                ClassMethod("load", return_value=Value.callable("Surfer"))
             ]
         ),
         Class(
