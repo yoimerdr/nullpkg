@@ -61,7 +61,7 @@ class Package(File):
 
     def __str__(self):
         pkg_import = None
-        if self.imports:
+        if self.imports or self.items:
             pkg_import = Import(".")
             for package in self.packages.values():
                 parents = tuple(package.parents)
